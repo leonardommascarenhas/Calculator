@@ -1,0 +1,21 @@
+.number-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vh;
+}
+
+.operador {
+  width: 450px;
+  height: 150px;
+  font-size: 100px;
+}
+
+button {
+  background-color: #657786;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+}
