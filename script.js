@@ -1,7 +1,9 @@
 let num1 = "";
 let num2 = "";
 let operator = "";
+let result = "";
 
+const holder = document.querySelector(".holder");
 const input = document.querySelector(".operador");
 const buttons = document.querySelectorAll("button");
 
@@ -14,8 +16,13 @@ function populateInput(e) {
     clear();
   }
   if (e.target.classList.contains("symbol")) {
-    clear();
-    operator = e.target.innerHTML;
+    if (input.innerHTML == "") {
+      input.innerHTML = "error";
+    } else {
+      input.innerHTML = "";
+      holder.innerHTML = num1;
+      operator = e.target.innerHTML;
+    }
   }
   if (operator === "") {
     if (e.target.classList.contains("number")) {
@@ -28,19 +35,22 @@ function populateInput(e) {
   }
   if (e.target.classList.contains("equals")) {
     equals();
+    holder.innerHTML = "";
   }
 }
 
 function equals() {
-  if (num1 != "" && operator != "" && num2 != "") {
-    input.innerHTML = calculate(operator, num1, num2);
-    num1 = input.innerHTML;
-  } else {
-    return (input.innerHTML = "ERROR");
-  }
+  result = calculate(operator, num1, num2);
+  input.innerHTML = result;
+  num1 = result;
 }
 
 function clear() {
+  result = "";
+  num1 = "";
+  num2 = "";
+  operator = "";
+  holder.innerHTML = "";
   input.innerHTML = "";
 }
 
@@ -60,6 +70,8 @@ function multiply(a, b) {
 }
 
 function calculate(operator, a, b) {
+  a = Number(a);
+  b = Number(b);
   switch (operator) {
     case "+":
       return add(a, b);
