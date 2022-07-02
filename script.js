@@ -3,6 +3,7 @@ let num2 = "";
 let operator = "";
 let result = "";
 
+const del = document.querySelector(".delete");
 const holder = document.querySelector(".holder");
 const input = document.querySelector(".operador");
 const buttons = document.querySelectorAll("button");
@@ -36,6 +37,10 @@ function populateInput(e) {
   if (e.target.classList.contains("equals")) {
     equals();
     holder.innerHTML = "";
+  }
+  if (e.target.classList.contains("delete")) {
+    input.innerHTML = input.innerHTML.slice(0, -1);
+    num1 = input.innerHTML;
   }
 }
 
